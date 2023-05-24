@@ -51,7 +51,7 @@ pipeline {
             }
             steps {
                 sshagent(['ubuntulocalhost']) {
-                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/dev/hosts.yml --diff pd-ansible/playbooks/moviesstorageservice-swarm.yml --extra-vars \"moviesstorageservice_tag=$TAG_NAME\"'"
+                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/prod/hosts.yml --diff pd-ansible/playbooks/moviesstorageservice-swarm.yml --extra-vars \"moviesstorageservice_tag=$TAG_NAME\"'"
                 } 
             }
         }
