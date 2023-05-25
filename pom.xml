@@ -66,13 +66,6 @@
 			<version>1.23.1</version>
 		</dependency>
 
-		<!--
-		KAfka:
-		-->
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka</artifactId>
-		</dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -112,7 +105,7 @@
 			<dependency>
 				<groupId>org.keycloak.bom</groupId>
 				<artifactId>keycloak-adapter-bom</artifactId>
-				<!--// change the version by your own keycloak version-->
+				<!--// keycloak version-->
 				<version>21.1.1</version>
 				<type>pom</type>
 				<scope>import</scope>
