@@ -21,6 +21,11 @@ public class MovieController {
         return new ResponseEntity<>(movieService.getMovies(token), HttpStatus.OK);
     }
 
+    @GetMapping(value = "movie/{movieId}")
+    public ResponseEntity<Movie> getMovie(  @PathVariable Long movieId, @RequestHeader("Authorization") String token) throws VerificationException {
+        return movieService.getMovie(movieId, token);
+    }
+
     @PostMapping(value = "/movie")
     public ResponseEntity<Movie> postMovie(@RequestBody Movie movie, @RequestHeader("Authorization") String token) throws VerificationException {
         return new ResponseEntity<>(movieService.createMovie(movie, token), HttpStatus.CREATED);

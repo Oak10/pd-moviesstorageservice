@@ -81,4 +81,17 @@ public class MovieService {
         movie.setAccount(account);
         return new ResponseEntity<>(movieRepository.save(movie), HttpStatus.CREATED);
     }
+
+    public ResponseEntity<Movie> getMovie(Long movieId, String token) throws VerificationException {
+        Account account = accountRepository.findOneByMail(getMailFromToken(token));
+        Movie movieBefore= movieRepository.findById(movieId).orElseThrow(
+                ()-> new EntityNotFoundException(
+                        String.format(
+                                "Movie with id [%d] was not found!", movieId)));
+        if (movieBefore.getAccount() != account){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+
+        return new ResponseEntity<>(movieBefore, HttpStatus.CREATED);
+    }
 }
